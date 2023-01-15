@@ -3,6 +3,7 @@ from ProfileApp import views
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('test', views.test, name='test'),
     path('home', views.home, name='home'),
     path('base', views.base, name='base'),
     path('story', views.story, name='story'),
