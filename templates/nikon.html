@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+div.gallery {
+  margin: 5px;
+  border: 0px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 0px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+
+    <div class="gallery" >
+  <a target="_blank" href="https://www.digital2home.com/nikon-d750-bk-sg">
+    <img src="{% static 'images/d750.png' %}" alt="Mountains" width="600" height="400">
+  </a>
+  <div class="desc">Nikon D750</div>
+</div>
+
+    <div class="gallery" >
+  <a target="_blank" href="https://www.nikonusa.com/en/nikon-products/product/mirrorless-cameras/z-7.html">
+    <img src="{% static 'images/z7.png' %}" alt="Mountains" width="600" height="400">
+  </a>
+  <div class="desc">Nikon Z7</div>
+</div>
+
+    <div class="gallery" >
+  <a target="_blank" href="https://www.nikon.co.th/dslr-d-6">
+    <img src="{% static 'images/d6.png' %}" alt="Mountains" width="600" height="400">
+  </a>
+  <div class="desc">Nikon D6</div>
+</div>
+
+    <div class="gallery" >
+  <a target="_blank" href="https://www.nikon.co.th/dslr-d-850">
+        <img src="{% static 'images/d850.png' %}" alt="Mountains" width="600" height="400">
+  </a>
+  <div class="desc">Nikon D850</div>
+</div>
+{% endblock %}

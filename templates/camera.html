@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+.container {
+  position: relative;
+  font-family: Arial;
+}
+
+.text-block {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: plum;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+</style>
+    <h3><center>ประวัติความเป็นมาของเทคโนโลยี กล้องถ่ายรูป</center></h3>
+    <hr>
+<div class="container">
+  <img src="{% static 'images/11111.jpeg' %}" alt="Nature" style="width:100%;" >
+  <div class="text-block ">
+    <h4>กล้องถ่ายรูปเกิดขึ้นมาได้ยังไงกันนะ ?</h4>
+    <p>‘กล้องถ่ายรูป’ เกิดขึ้นมาเพราะมีผู้เห็นภาพกลับหัวบนกำแพง ภายในห้องทึบแสง โดยภาพนั้นเกิดจากแสงที่มาจากภายนอกลอดผ่านรูขนาดเล็ก อันสะท้อนและก่อให้เกิดภาพเหมือนบนผนังอีกด้านของห้อง ทำให้เกิดไอเดียนำวิธีนี้มาประดิษฐ์เป็นกล้อง Obscura โดยคำว่า ‘Camera’ แปลว่า ‘ห้อง’ คำว่า ‘Obscura’ แปลว่า ‘มืด’</p>
+  </div>
+</div>
+<br>
+    <center>
+    <div class="container">
+  <img src="{% static 'images/Johannes_Zahn.jpg' %}" alt="Nature" style="width:50%;" >
+  <div class="text-block ">
+    <h4>Johannes Zahn</h4>
+    <p>ออกแบบกล้อง Obscura ไว้มากมายหลายแบบ โดยมีการนำกระจกติดไว้บริเวณด้านหลังของกล้อง เพื่อให้แสงสะท้อนแสงขึ้นไปยังด้านบน ทำให้ภาพออกมาไม่กลับหัว และในคริสต์ศตวรรษที่ 16 ได้มีการสร้างกล้องส่องทางไกล จึงนำเลนส์มาใส่ไว้ตรงช่องรับแสงแทนรูเข็ม ทำให้ได้รูปสว่างไสวและคมชัดมากขึ้น
+‘กล้อง Daguerreotype’ ถือกำเนิดขึ้นมาในปีค.ศ. 1841 โดยฝีมือของนาย William Henry Talbot เขาพัฒนาระบบที่มีชื่อว่า ‘Calotype’ ที่มีคุณสมบัติพิเศษ คือ เป็นภาพกลับสี ซึ่งจากวิธีนี้ช่วยสร้างสำเนาจากต้นฉบับได้หลายชุด นับเป็นการพัฒนาไปอีกขั้น ต่อมา ค.ศ. 1843 มีการนำรูปถ่ายมาใช้เพื่อการโฆษณาครั้งแรก ณ เมือง Philadephia ประเทศสหรัฐอเมริกา สร้างความตื่นตาตื่นใจให้แก่ผู้คนในยุคนั้นมาก</p>
+  </div>
+</div>
+    </center>
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <style>
+img.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 200px;
+
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+  padding: 0px;
+  font-family: Arial;
+}
+
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: -8px -20px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* Clear floats after rows */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: lightyellow;
+  padding: 10px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 900px) {
+  .column {
+    width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+</style>
+    <br>
+<img class="sticky" src="{% static 'images/headLogo.png' %}" alt="Avatar"><br>
+<h2>I LOVE TO GO </h2>
+<p>Kulachet Cheosakul</p>
+
+    <div class="main">
+
+<h1>ILOVETOGO.COM</h1>
+<hr>
+
+<h2>จุดเริ่มต้น</h2>
+<p>ของช่อง I love to go . com</p>
+
+<!-- Portfolio Gallery Grid -->
+<div class="row">
+  <div class="column">
+    <div class="content">
+      <iframe width="215" height="150" src="https://www.youtube.com/embed/TF2ty1S-XoI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <h3>กำเนิด </h3>
+      <p>iLoveToGo SHOP</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="content">
+    <iframe width="215" height="150" src="https://www.youtube.com/embed/g3E8T1ykgjI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <h3>iLoveToGo</h3>
+      <p>พี่ๆเรียนจบอะไรกันมา</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="content">
+    <iframe width="215" height="150" src="https://www.youtube.com/embed/5S_Jk0egRF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <h3>ฟรีแลนซ์มือใหม่</h3>
+      <p>ต้องเจอกับอะไรบ้าง</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="content">
+    <iframe width="215" height="150" src="https://www.youtube.com/embed/BWZGILskj8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <h3>เที่ยวต่างประเทศ</h3>
+      <p>มือใหม่วิธีเที่ยวต่างประเทศเอง</p>
+    </div>
+  </div>
+<!-- END GRID -->
+</div>
+
+<div class="content">
+  <iframe width="100%"  src="https://www.youtube.com/embed/JzmWthnGEdw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <center><h3>คำเตือน!!</h3>
+  <p>เที่ยวญี่ปุ่นด้วยตัวเอง ฟูจิและรอบๆโตเกียว</p>
+  <p>คลิปนี้ เป็นคลิปเที่ยวฟูจิ และรอบๆ โตเกียว ซึ่งจะมีความยสง เป็น 10 กว่าชม. <br> อย่าดูต่อเนื่องยาวนานจนเสียสุุขภาพ ขอบคุณทุกคนล่วงหน้าที่จะดูจนจบ</p></center>
+</div>
+
+<!-- END MAIN -->
+</div>
+{% endblock %}

@@ -1,0 +1,104 @@
+{%  load static %}
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+{
+  font-family: Arial,Helvetica,sans-serif;
+  margin: 0;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: lightblue;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: lightblue;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+</style>
+ <ul type="square" >
+        <li><a href="/ProfileApp/home">หน้าหลัก</a></li>
+        <li><a href="/ProfileApp/story">ประวัติส่วนตัว</a></li>
+        <li><a href="/ProfileApp/storystudy">ประวัติการศึกษา</a></li>
+        <li><a href="/ProfileApp/camera">สิ่งที่สนใจ</a></li>
+        <div class="subnav">
+        <button class="subnavbtn">สินค้า <i class="fa fa-caret-down"></i></button>
+            <div class="subnav-content">
+                <li><a href="/ProfileApp/canon">Canon</a></li>
+                <li><a href="/ProfileApp/sony">Sony</a></li>
+                <li><a href="/ProfileApp/nikon">Nikon</a></li>
+            </div>
+    </div>
+        <li><a href="/ProfileApp/copyname">บุคคลต้นแบบ</a></li>
+        <li><a href="/ProfileApp/hpy">Happy new year</a></li>
+ </ul>
