@@ -15,4 +15,7 @@ urlpatterns = [
     path('copyname', views.copyname, name='copyname'),
     path('storystudy', views.storystudy, name='storystudy'),
     path('hpy', views.hpy, name='hpy'),
+    path('showMyData',views.showMyData, name='showMyData'),
+    path('showMydatas',views.showMydatas, name='showMydatas'),
+
 ]

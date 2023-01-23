@@ -6,4 +6,5 @@ from ProfileApp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ProfileApp/', include('ProfileApp.urls')),
+
 ]

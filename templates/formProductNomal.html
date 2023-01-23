@@ -1,0 +1,34 @@
+{#{% extends 'base.html' %}#}
+{#{% load static %}#}
+{#{% load fontawesome_5 %}#}
+{#{% fontawesome_5_static %}#}
+{#{% block content %}#}
+{##}
+{#    <h2 class="text-center text-primary bg-light">New Product Normal</h2>#}
+{#    <table class="table table-info">#}
+{#    <form  method="post" class="form-control">#}
+{#        {% csrf_token %}#}
+{#        {{ form.as_table }}#}
+{#        <tr>#}
+{#            <td>Product ID</td>#}
+{#            <td><input type="text" name="id" size="15" maxlength="13" required="required"></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Name</td>#}
+{#            <td><input type="text" name="id" size="55" maxlength="50" required="required"></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Brand</td>#}
+{#            <td><input type="text" name="brand" size="35" maxlength="30" required="required"></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Price</td>#}
+{#            <td><input type="number" name="price" size="10" min="1" max="100000" required="required"></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Net</td>#}
+{#            <td><input type="number" name="net" size="10" min="0" max="1000" required="required"></td>#}
+{#        </tr>#}
+{#    </form>#}
+{#    </table>#}
+{#{% endblock %}#}
