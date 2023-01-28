@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load fontawesome_5 %}
+{% fontawesome_5_static %}
 {% block content %}
-
     <table class="table table-info">
     <form  method="post" class="form-control">
         {% csrf_token %}

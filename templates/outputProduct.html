@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fontawesome_5 %}
+{% fontawesome_5_static %}
+{% block content %}
+    <h2 class="text-center text-primary bg-light">Our Product for sale</h2>
+    <table class="table table-danger table-striped table-hover">
+          <b>
+              <p>ข้อมูลสินค้าประเภท: Camera thailand</p>
+              <p>ทีผู้จัดทำ: Sukul khuridi</p>
+              <p>วันที่เผยแผร่: 30/01/2566</p>
+            </b>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Color</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Vat</th>
+            <th>Discount</th>
+            <th>Total</th>
+        </tr>
+        {% for products in product %}
+        <tr>
+            <td>{{ products.id }}</td>
+            <td>{{ products.name }}</td>
+            <td>{{ products.type }}</td>
+            <td>{{ products.color }}</td>
+            <td>{{ products.brand }}</td>
+            <td>{{ products.price | floatformat:2 }}</td>
+            <td>{{ products.Vat | floatformat:2}}</td>
+            <td>{{ products.Discount | floatformat:2}}</td>
+            <td>{{ products.Total | floatformat:2}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <div class="row">
+    <div class="col col-6 text-lg-start">
+        <a href="{% url 'home' %}" class="btn btn-primary">
+    <i class="fas fa-list">Home</i>
+    </a>
+    </div>
+    <div class="col col-6 text-lg-start">
+        <a href="{% url 'listProduct' %}" class="btn btn-primary">
+    <i class="fas fa-list">เพิ่มสินค้า</i>
+    </a>
+    </div>
+    </div>
+
+{% endblock %}

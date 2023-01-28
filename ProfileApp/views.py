@@ -70,28 +70,80 @@ def showMydatas(request):
                  ["Canon EOS R","85000","images/r.png"]]
     return render(request,'showMydatas.html',{'nickname':nickname,'firstname':firstname,'lastname':lastname,'telephone':telephone,'gender':gender,'address':address,'Studying':Studying,'learn':learn,'level':level,'room':room,'myproduct':myproduct})
 
+from ProfileApp.models import *
+lstoutproduct = []
+def listProduct(request):
+    # product = Product('p0001','mouse', 'Aser', 'black', '1canon','4500','7','5','4100')
+    # lstoutproduct.append(product)
+    context = {'product': lstoutproduct}
+    return render(request ,'outputProduct.html', context)
+
+def newProduct(request):
+    if request.method == 'POST':
+        id = request.POST['id']
+        name = request.POST['name']
+        type = request.POST['type']
+        color = request.POST['color']
+        brand = request.POST['brand']
+        price = request.POST['price']
+        product = Product(id,name,type,color,brand,price)
+        lstoutproduct.append(product)
+        return redirect('outputProduct')
+    else:
+        return render(request, 'listProduct.html')
+
+
+from ProfileApp.form import *
+def inputProduct(request):
+    if request.method == "POST":
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            form = form.cleaned_data
+            id = form.get('id')
+            name = form.get('name')
+            type = form.get('type')
+            color = form.get('color')
+            brand = form.get('brand')
+            price = form.get('price')
+            product = Product(id,name,type,color,brand,price)
+            lstoutproduct.append(product)
+            return  redirect('outputProduct')
+        else:
+            form = ProductForm(form)
+            context = {'form': form}
+            return render(request, 'inputProduct.html', context)
+    else:
+        form = ProductForm()
+        context = {'form': form}
+        return  render(request,'inputProduct.html',context)
+
 # from ProfileApp.models import *
-# productlist = []
+# productList = []
 # def showourproduct(request):
-#     context = {'product': productlist}
-#     return render(request ,'showourproduct.html', context)
+#     # product = Product('p0001','mouse', 'Aser', '500.00', '120')
+#     # productList.append(product)
+#     # product = Product('p0002', 'keyboard', 'Aser', '1200.00', '120')
+#     # productList.append(product)
+#     # product = Product('p0003', 'screen', 'Samsung', '3700.00', '120')
+#     # productList.append(product)
+#     context = {'products': productList}
+#     return render(request,'showourproduct.html',context)
 #
 # def newProduct(request):
-#     if request.method == 'POST':
+#     if request.method == 'POST': #submit ข้อมูลจากฟอร์มมา
 #         id = request.POST['id']
 #         name = request.POST['name']
 #         brand = request.POST['brand']
 #         price = request.POST['price']
 #         net = request.POST['net']
-#         product = Product(id,name,brand,price,net)
-#         productlist.append(product)
-#         return redirect('showourproduct')
-#     else:
-#         return render(request, 'formProductNomal.html')
+#         product = Product(id, name, brand, price, net)
+#         productList.append(product)
+#         return  redirect ('showourproduct')
+#     else: return render(request,'formProductNomal.html')
 #
 # from ProfileApp.form import *
-# def frmproduct(request):
-#     if request.method == "POST":
+# def frmProduct(request):
+#     if request.method == 'POST':
 #         form = ProductForm(request.POST)
 #         if form.is_valid():
 #             form = form.cleaned_data
@@ -100,15 +152,14 @@ def showMydatas(request):
 #             brand = form.get('brand')
 #             price = form.get('price')
 #             net = form.get('net')
-#             product = Product(id,name,brand,price,net)
-#             productlist.append(product)
-#             return  redirect('showourproduct')
+#             product = Product(id, name, brand,price, net)
+#             productList.append(product)
+#             return redirect('showourproduct')
 #         else:
 #             form = ProductForm(form)
-#             context = {'form': form}
-#             return render(request, 'formProductNomal.html', context)
+#
 #     else:
-#         form = ProductForm()
-#         context = {'form': form}
-#         return  render(request,'formProductNomal.html',context)
+#         form = ProductForm ()
+#     context = {'form':form}
+#     return render(request,'frmproduct.html',context)
 

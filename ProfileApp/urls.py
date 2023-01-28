@@ -18,4 +18,11 @@ urlpatterns = [
     path('showMyData',views.showMyData, name='showMyData'),
     path('showMydatas',views.showMydatas, name='showMydatas'),
 
+    # path('showourproduct',views.showourproduct, name = "showourproduct"),
+    # path('newProduct',views.newProduct, name = 'formProductNomal'),
+    # path('frmProduct',views.frmProduct, name='frmproduct'),
+
+    path('listProduct',views.listProduct, name='outputProduct'),
+    path('newProduct',views.newProduct,name='inputProduct'),
+    path('inputProduct',views.inputProduct,name='listProduct'),
 ]
