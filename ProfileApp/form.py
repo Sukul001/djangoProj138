@@ -1,9 +1,10 @@
 from django import forms
 from .models import *
 
+
 class ProductForm(forms.Form):
-    BRAND_LIST = [('Canon', 'Canon'), ('Sony', 'Sony'),('Nikon', 'Nikon')]
-    TYPE_RADIO = [('DSLR', 'DSLR'),('Mirrorless', 'Mirrorless'),('Micro Four Thirds', 'Micro Four Thirds')]
+    BRAND_LIST = [('Canon', 'Canon'), ('Sony', 'Sony'), ('Nikon', 'Nikon')]
+    TYPE_RADIO = [('DSLR', 'DSLR'), ('Mirrorless', 'Mirrorless'), ('Micro Four Thirds', 'Micro Four Thirds')]
     COLOR_RADIO = [('BLACK', 'BLACK'), ('white', 'white')]
     id = forms.CharField(max_length=13, label="id", required=True,
                          widget=forms.TextInput(attrs={'size': '15'}))
@@ -44,10 +45,10 @@ class ProductForm(forms.Form):
 class showgoodsForm(forms.ModelForm):
     class Meta:
         model = Goods
-        fields = ('gid','name','brand','mode','price','net','property','goodscategory')
+        fields = ('gid', 'name', 'brand', 'mode', 'price', 'net', 'property', 'goodscategory')
         widgets = {
             'pid': forms.TextInput(attrs={'class': 'form-control'}),
-            'name': forms.TextInput(attrs={'class': 'form-control','required':'required','max_length':35}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'required': 'required', 'max_length': 35}),
             'brand': forms.TextInput(attrs={'class': 'form-control'}),
             'mode': forms.TextInput(attrs={'class': 'form-control'}),
             'price': forms.NumberInput(attrs={'class': 'form-control'}),
@@ -55,6 +56,7 @@ class showgoodsForm(forms.ModelForm):
             'property': forms.TextInput(attrs={'class': 'form-control'}),
             'goodscategory': forms.Select(attrs={'class': 'form-control'}),
         }
+
     labels = {
         'pid': 'รหัสสินค้า',
         'name': 'ชื่อสินค้า',
@@ -65,29 +67,31 @@ class showgoodsForm(forms.ModelForm):
         'property': 'คุณสมบัติ',
         'goodscategory': 'ประเภท',
     }
-#---------------------------------------
-class showcustomerForm(forms.ModelForm):
-        class Meta:
-            model = Customer
-            fields = ('cid', 'name', 'surname', 'address', 'telephone', 'gender', 'carreer','password')
-            widgets = {
-                'cid': forms.TextInput(attrs={'class': 'form-control'}),
-                'name': forms.TextInput(attrs={'class': 'form-control', 'required': 'required', 'max_length': 35}),
-                'surname': forms.TextInput(attrs={'class': 'form-control'}),
-                'address': forms.TextInput(attrs={'class': 'form-control'}),
-                'telephone': forms.TextInput(attrs={'class': 'form-control'}),
-                'gender': forms.TextInput(attrs={'class': 'form-control'}),
-                'carreer': forms.TextInput(attrs={'class': 'form-control'}),
-                'password': forms.TextInput(attrs={'class': 'form-control'}),
-            }
 
-        labels = {
-            'cid': 'รหัสลูกค้า',
-            'name': 'ชื่อลูหค้า',
-            'surname': 'นามสกุล',
-            'address': 'ที่อยู่',
-            'telephone': 'เบอร์โทร',
-            'gender': 'เพศ',
-            'carreer': 'ชื่อเข้าใช้',
-            'password': 'รหัสผ่าน',
+
+# ---------------------------------------
+class showcustomerForm(forms.ModelForm):
+    class Meta:
+        model = Customer
+        fields = ('cid', 'name', 'surname', 'address', 'telephone', 'gender', 'carreer', 'password')
+        widgets = {
+            'cid': forms.TextInput(attrs={'class': 'form-control'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'required': 'required', 'max_length': 35}),
+            'surname': forms.TextInput(attrs={'class': 'form-control'}),
+            'address': forms.TextInput(attrs={'class': 'form-control'}),
+            'telephone': forms.TextInput(attrs={'class': 'form-control'}),
+            'gender': forms.TextInput(attrs={'class': 'form-control'}),
+            'carreer': forms.TextInput(attrs={'class': 'form-control'}),
+            'password': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
+    labels = {
+        'cid': 'รหัสลูกค้า',
+        'name': 'ชื่อลูหค้า',
+        'surname': 'นามสกุล',
+        'address': 'ที่อยู่',
+        'telephone': 'เบอร์โทร',
+        'gender': 'เพศ',
+        'carreer': 'ชื่อเข้าใช้',
+        'password': 'รหัสผ่าน',
+    }
