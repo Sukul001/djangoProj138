@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fontawesome_5 %}
+{% block content %}
+    <style>
+    body {}
+    </style>
+    <h1 class="text-danger text-center bg-light">Create New Product</h1>
+    <form method="post" class="form form-control">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <div class="text-center">
+        <input type="submit" value="Save" class="btn-success">
+        <input type="reset" value="Reset" class="btn-danger">
+    </div>
+    </form><br><br>
+    <div class="text-center">
+    <a href="{% url 'home' %}" class="btn-primary">
+        <i class="fa-home"></i>Home
+    </a>
+    </div>
+{% endblock %}

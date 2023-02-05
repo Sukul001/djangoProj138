@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fontawesome_5 %}
+{% fontawesome_5_static %}
+{% block content %}
+    <h1 class="text-center text-dark bg-white">One Product 30/01/66</h1>
+     <h2 class="text-center text-dark bg-white">{{ product.pid }}:{{ product.name }}</h2>
+    <table class="table  table-hover table-striped " style="background-color: #eccccf">
+        <tr>
+            <td>ID</td>
+            <td>{{ product.cid }}</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>{{ product.name }}</td>
+        </tr>
+    <tr>
+            <td>Surname</td>
+            <td>{{ product.surname }}</td>
+        </tr>
+    <tr>
+            <td>Address</td>
+            <td>{{ product.address }}</td>
+        </tr>
+    <tr>
+            <td>Telephone</td>
+            <td>{{ product.telephone}}</td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>{{ product.gender}}</td>
+        </tr>
+        <tr>
+            <td>Carreer</td>
+            <td>{{ product.carreer}}</td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td>{{ product.password}}</td>
+        </tr>
+    </table>
+    <a onclick="history.back();" class="btn btn-warning">Back</a>
+{% endblock %}

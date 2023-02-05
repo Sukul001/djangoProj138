@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fontawesome_5 %}
+{% fontawesome_5_static %}
+{% block content %}
+    <h1 class="text-center text-dark bg-white">One Product 30/01/66</h1>
+     <h2 class="text-center text-dark bg-white">{{ product.gid }}:{{ product.mode }}</h2>
+    <table class="table  table-hover table-striped " style="background-color: #eccccf">
+        <tr>
+            <td>ID</td>
+            <td>{{ product.gid }}</td>
+        </tr><br>
+        <tr>
+            <td>Name</td>
+            <td>{{ product.name }}</td>
+        </tr>
+    <tr>
+            <td>Brand</td>
+            <td>{{ product.brand }}</td>
+        </tr>
+        <tr>
+            <td>Model</td>
+            <td>{{ product.mode }}</td>
+        </tr>
+    <tr>
+            <td>Price</td>
+            <td>{{ product.price }}</td>
+        </tr>
+    <tr>
+            <td>Net</td>
+            <td>{{ product.net }}</td>
+        </tr>
+        <tr>
+            <td>Property</td>
+            <td>{{ product.property }}</td>
+        </tr>
+    <tr>
+            <td>Category</td>
+            <td>{{ product.goodscategory.gc_name }}</td>
+        </tr>
+    </table>
+    <a onclick="history.back();" class="btn btn-warning">Back</a>
+{% endblock %}

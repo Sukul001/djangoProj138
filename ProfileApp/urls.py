@@ -21,8 +21,22 @@ urlpatterns = [
     # path('showourproduct',views.showourproduct, name = "showourproduct"),
     # path('newProduct',views.newProduct, name = 'formProductNomal'),
     # path('frmProduct',views.frmProduct, name='frmproduct'),
-
+    # คนละส่วน
     path('listProduct',views.listProduct, name='outputProduct'),
     path('newProduct',views.newProduct,name='inputProduct'),
     path('inputProduct',views.inputProduct,name='listProduct'),
+    # คนละส่วน
+    # path('retrieveallproduct',views.productRetrieveall,name='retrieveallproduct'),
+    # path('createproduct',views.createProduct,name='createproduct'),
+    # path('<id>/retrieveoneproduct',views.productRetieveOne,name='retrieveoneproduct'),
+    # คนละส่วน good
+    path('showGoodsList',views.showGoodsList,name='showGoodsList'),
+    path('newGoods',views.newGoods,name='newGoods'),
+    path('<id>/showGoodsOne',views.showGoodsOne,name='showGoodsOne'),
+
+    #ส่วนของ customer
+    path('showCustomerList',views.showCustomerList,name='showCustomerList'),
+    path('newCustomer',views.newCustomer,name='newCustomer'),
+    path('<id>/showCustomerOne',views.showCustomerOne,name='showCustomerOne'),
+
 ]
