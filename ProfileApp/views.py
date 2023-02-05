@@ -276,7 +276,7 @@ def newCustomer(request):
             messages.add_message(request,messages.SUCCESS,'บันทุกสินค้าใหม่เรียบร้อย.........')
             return redirect('showCustomerList')
         else:
-            product = Customer.objects.get(cid=request.POST['gid'])
+            product = Customer.objects.get(cid=request.POST['cid'])
             if product:
                 messages.add_message(request, messages.SUCCESS, 'รหัสสินค้าที่่กำหนดซ้ำกับที่มีอยู่')
             messages.add_message(request, messages.SUCCESS, 'ไม่สามารถบันทึกข้อมูลสินค้าใหม่ได้.........')
