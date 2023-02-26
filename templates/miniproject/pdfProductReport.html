@@ -1,0 +1,48 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="{% static 'stylesheets/bt502/css/bootstrap.css' %}">
+    <script src="{% static 'stylesheets/bt502/js/bootstrap.bundle.js'%}"></script>
+    <script type="text/javascript" src="{% static 'stylesheets/layout/scripts/jquery.min.js'%}"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <title>รายงานลงทะเบียนSME</title>
+</head>
+<body>
+    <h1 align="center">
+        <b style="font-size:25px;font-weight: bold">
+            รายงานลงทะเบียนSME
+        </b>
+    </h1>
+    <h2 align="center">
+        บริษัท ให้สินเชื่อผู้ประกอบการรายย่อย <br>
+
+    </h2>
+    <hr align="center" width="300">
+        <table width="90%" border="1" align="center">
+            <tr style="font-size: 11px">
+                <th>เลขผู้เสียภาษี</th><th>ชื่อกิจการ</th><th>ที่อยู่</th><th>รหัสไปรษณีย์</th> <th>วันจดทะเบียน</th>
+                <th>ประวัติทะเบียน</th><th>เบอร์โทรศัพท์</th><th>ชื่อตัวแทน</th><th>วัตถุการก่อตั้ง</th>
+            </tr>
+            {% for product in products %}
+                <tr style="font-size: 9px">
+                    <td align="center">{{ product.sme_id }}</td>
+                    <td>{{ product.sme_name }}</td>
+                    <td align="right">{{ product.sme_address}}</td>
+                    <td align="right">{{ product.sme_zipcode }}</td>
+                    <td align="right">{{ product.sme_regis}} </td>
+                    <td align="right">{{ product.sme_history }}</td>
+                    <td align="right">{{ product.sme_phone}} </td>
+                    <td align="right">{{ product.sme_agent }}</td>
+                    <td align="right">{{ product.sme_objective}} </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="9" align="center"><b>รวมจำนวน {{ products.count }} รายการ</b></td>
+            </tr>
+        </table>
+            <br><br><br><br><br>
+
+</body>
+</html>

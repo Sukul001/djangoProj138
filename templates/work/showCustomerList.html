@@ -33,6 +33,12 @@
                 <a href="{% url 'showCustomerOne' product.cid %}">
                     <i class="fa fa-search" style="color: #51585e"></i>id
                 </a>
+                <a href="{% url 'updateCustomer' product.cid %}">
+                    <i class="fa fa-search" style="color: #51585e"></i>update
+                </a>
+                <a href="{% url 'deleteCustomer' product.cid %}" onclick="return confirm('โปรดยืนยันการลบสินค้า {{ product.gid }}: {{ product.name }}')">
+                    <i class="fa fa-trash" style="color: #51585e"></i>delete
+                </a>
             </td>
         </tr>
         {% endfor %}

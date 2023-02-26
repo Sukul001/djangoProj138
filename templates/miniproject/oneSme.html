@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fontawesome_5 %}
+{% fontawesome_5_static %}
+{% block content %}
+    <h1 class="text-center text-dark bg-white">ข้อมูล SME</h1>
+     <h2 class="text-center text-dark bg-white">{{ product.sme_id }}:{{ product.sme_name }}</h2>
+    <table class="table  table-hover table-striped " style="background-color: lavender">
+        <tr>
+            <td>เลขที่ประจำตัวผู้เสียภาษีอากร</td>
+            <td>{{ product.sme_id }}</td>
+        </tr><br>
+        <tr>
+            <td>ชื่อกิจการรายย่อย</td>
+            <td>{{ product.sme_name }}</td>
+        </tr>
+    <tr>
+            <td>ที่อยู่</td>
+            <td>{{ product.sme_address }}</td>
+        </tr>
+        <tr>
+            <td>รหัสไปรษณีย์</td>
+            <td>{{ product.sme_zipcode }}</td>
+        </tr>
+    <tr>
+            <td>วันที่จดทะเบียน</td>
+            <td>{{ product.sme_regis }}</td>
+        </tr>
+    <tr>
+            <td>ประวัติการจดทะเบียน</td>
+            <td>{{ product.sme_history }}</td>
+        </tr>
+        <tr>
+            <td>เบอร์โทรศัพท์</td>
+            <td>{{ product.sme_phone }}</td>
+        </tr>
+    <tr>
+            <td>ชื่อตัวแทน</td>
+            <td>{{ product.sme_agent }}</td>
+        </tr>
+    <tr>
+            <td>วัตถุประสงค์การก่อตั้ง</td>
+            <td>{{ product.sme_objective }}</td>
+        </tr>
+    </table>
+    <a onclick="history.back();" class="btn btn-primary"><i class="fa-solid fa-arrow-left" style="font-size: 20px"></i>&nbsp;Back</a>
+{% endblock %}

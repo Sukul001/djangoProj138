@@ -1,38 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-{%  load static %}
+{% load static %}
 {% load fontawesome_5 %}
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>เว็บไซต์ให้สินเชื่อผู้ประกอบการรายย่อย</title>
     <link type="text/css" rel="stylesheet" href="{% static 'stylesheet/bt523/css/bootstrap.css' %}">
-        <script src="{% static 'stylesheet/bt523/js/bootstrap.js' %}"></script>
-        <script src="{% static 'stylesheet/bt523/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'stylesheet/bt523/js/bootstrap.js' %}"></script>
+    <script src="{% static 'stylesheet/bt523/js/bootstrap.bundle.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+          integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 bg-warning">
+<style type="text/css">
+    body {
+        font-family: 'Prompt', sans-serif;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 " style="background-color: #054755 ">
             {% include 'header.html' %}
-            </div>
-            <div class="col-lg-12 bg-dark">
+        </div>
+        <div class="col-lg-12 bg-dark">
             {% include 'menu.html' %}
-            </div>
-            <div class="col-lg-12 bg-warning ">
-                {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} alert-dismissible"role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-            {{ message }}
-            </div>
-                {% endfor %}
+        </div>
+        <div class="col-lg-12 " style="background-color: #ecd494 ">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message }}
+                </div>
+            {% endfor %}
 
-                {% block content %}
+            {% block content %}
 
-                {% endblock %}
+            {% endblock %}
+
+        </div>
+        <div class="mt-5 p-4 text-white text-center" style="background-color: #3d3d7c">
+            <div class="row">
+                <div class="col-sm-5">
+                    <p><h5><b>เกี่ยวกับเรา </b></h5></p>
+                    <p>ให้สินเชื่อผู้เประกอบการ
+                    <p>ประเภทบริการทางธุรกิจ
+                    <p>ใข่าวประชาสัมพันธ์
+                    <p>คำถามที่พบบ่อย
+                    <p>ข้อกำหนดเว็บไซต์
+                    <p>นโยบายความเป็นส่วนตัว
+
+                </div>
+                <div class="col-sm-4">
+                    <p><h5><b>Contect As </b></h5></p>
+                            <i class="fa-solid fa-envelope" style="font-size: 20px"></i>&nbsp;Sukul@rmuti.ac.th
+                            <br><i class="fa-solid fa-phone-volume " style="font-size: 20px"></i>&nbsp;02-038-5858 , 02-298-3051
+                </div>
+                <div class="col-sm-3">
+                    <!-- clock widget start -->
+                    <script type="text/javascript"> var css_file = document.createElement("link");
+                    css_file.setAttribute("rel", "stylesheet");
+                    css_file.setAttribute("type", "text/css");
+                    css_file.setAttribute("href", "https://s.bookcdn.com//css/cl/bw-cl-c22.css?v=0.0.1");
+                    document.getElementsByTagName("head")[0].appendChild(css_file); </script>
+                    <div id="tw_22_384675926">
+                        <div style="width:200px; height:100px; margin: 0 auto;"><a
+                                href="https://hotelmix.co.th/time/bangkok-18061">กรุงเทพมหานคร</a><br/></div>
+                    </div>
+                    <script type="text/javascript"> function setWidgetData_384675926(data) {
+                        if (typeof (data) != 'undefined' && data.results.length > 0) {
+                            for (var i = 0; i < data.results.length; ++i) {
+                                var objMainBlock = '';
+                                var params = data.results[i];
+                                objMainBlock = document.getElementById('tw_' + params.widget_type + '_' + params.widget_id);
+                                if (objMainBlock !== null) objMainBlock.innerHTML = params.html_code;
+                            }
+                        }
+                    }
+
+                    var clock_timer_384675926 = -1;
+                    widgetSrc = "https://widgets.booked.net/time/info?ver=2;domid=1171;type=22;id=384675926;scode=33738;city_id=18061;wlangid=30;mode=1;details=0;background=ffffff;border_color=ffffff;color=686868;add_background=ffffff;add_color=333333;head_color=ffffff;border=0;transparent=0";
+                    var widgetUrl = location.href;
+                    widgetSrc += '&ref=' + widgetUrl;
+                    var wstrackId = "";
+                    if (wstrackId) {
+                        widgetSrc += ';wstrackId=' + wstrackId + ';'
+                    }
+                    var timeBookedScript = document.createElement("script");
+                    timeBookedScript.setAttribute("type", "text/javascript");
+                    timeBookedScript.src = widgetSrc;
+                    document.body.appendChild(timeBookedScript); </script>
+                    <!-- clock widget end -->
+
+
+                </div>
             </div>
         </div>
     </div>
+
+</div>
+
 </body>
 </html>

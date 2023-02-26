@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fontawesome_5 %}
+{% block content %}
+    <style>
+    body {}
+    </style>
+    <h1 class="text-danger text-center bg-light">ข้อมูลการขอกู้ยืม</h1>
+    <form method="post" class="form form-control">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <div class="text-center">
+        <br><button type="submit" value="submit button" class="btn btn-outline-success"><i class="fa-solid fa-circle-check" style="font-size: 20px"></i>&nbsp;Success</button>
+        <button type="button" class="btn btn-outline-danger"><i class="fa-solid fa-repeat" style="font-size: 20px"></i>&nbsp;Reset</button>
+    </div>
+    </form><br><br>
+    <div class="text-center">
+   <a onclick="history.back();" class="btn btn-primary"><i class="fa-solid fa-arrow-left" style="font-size: 20px"></i>&nbsp;Back</a>
+    </div>
+
+{% endblock %}

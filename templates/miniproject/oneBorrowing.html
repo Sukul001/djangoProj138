@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fontawesome_5 %}
+{% fontawesome_5_static %}
+{% block content %}
+    <h1 class="text-center text-dark bg-white">ข้อมูลการกู้ยืม</h1>
+     <h2 class="text-center text-dark bg-white">{{ product.borrow_id }}:{{ product.borrow_objective }}</h2>
+    <table class="table  table-hover table-striped " style="background-color: floralwhite">
+        <tr>
+            <td>รหัสการขอกู้</td>
+            <td>{{ product.borrow_id }}</td>
+        </tr><br>
+        <tr>
+            <td>วันที่</td>
+            <td>{{ product.borrow_date }}</td>
+        </tr>
+    <tr>
+            <td>ประเภทคำขอกู้</td>
+            <td>{{ product.borrow_type }}</td>
+        </tr>
+        <tr>
+            <td>จุดประสงค์การกู้</td>
+            <td>{{ product.borrow_objective }}</td>
+        </tr>
+    <tr>
+            <td>วงเงินขอกู้</td>
+            <td>{{ product.borrow_limitmoney }}</td>
+        </tr>
+    <tr>
+            <td>ไฟล์โครงการ</td>
+            <td>{{ product.borrow_file }}</td>
+        </tr>
+        <tr>
+            <td>สถานะคำขอกู้</td>
+            <td>{{ product.borrow_status  }}</td>
+        </tr>
+    <tr>
+            <td>เลขที่ประจำตัวผู้เสียภาษีอากร</td>
+            <td>{{ product.borrow_id }}</td>
+        </tr>
+    </table>
+    <a onclick="history.back();" class="btn btn-primary"><i class="fa-solid fa-arrow-left" style="font-size: 20px"></i>&nbsp;Back</a>
+{% endblock %}

@@ -1,0 +1,212 @@
+view----------------------
+def showCustomerList(request):
+    products = Customer.objects.all()
+    context = {'products': products}
+    return render(request, 'work/showCustomerList.html', context)
+
+
+def showCustomerOne(request, id):
+    product = Customer.objects.get(cid=id)  # เช็ค pk
+    context = {'product': product}
+    return render(request, 'work/showCustomerOne.html', context)
+
+
+def newCustomer(request):
+    if request.method == 'POST':
+        form = showcustomerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request,messages.SUCCESS,'บันทึกสินค้าใหม่เรียบร้อย.........')
+            return redirect('showCustomerList')
+        else:
+            product = Customer.objects.get(cid=request.POST['cid'])
+            if product:
+                messages.add_message(request, messages.SUCCESS, 'รหัสสินค้าที่่กำหนดซ้ำกับที่มีอยู่')
+            messages.add_message(request, messages.SUCCESS, 'ไม่สามารถบันทึกข้อมูลสินค้าใหม่ได้.........')
+
+    else:
+        form = showcustomerForm()
+    context = {'form':form}
+    return render(request,'work/newCustomer.html',context)
+
+def updateCustomer(request, id):
+    product = get_object_or_404(Customer,cid=id)
+    form = showcustomerForm(data=request.POST or None, instance=product)
+    if request.method =='POST':
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, 'แก้ไขสินค้าใหม่เรียบร้อย.........')
+            return  redirect('showCustomerList')
+        else:
+            context = {'form': form}
+            messages.add_message(request, messages.SUCCESS, 'ข้อมูลไม่ถูกต้อง.........',context)
+    else:
+        form.updateCustomer()
+        context = {'form': form}
+        return  render(request, 'work/updateCustomer.html',context)
+
+def deleteCustomer(request, id):
+    product = get_object_or_404(Goods,cid=id)
+    if product:
+        product.delete()
+        messages.add_message(request, messages.SUCCESS, 'ลบข้อมูลเรียบร้อย')
+        return redirect('showCustomerList')
+    else:
+        messages.add_message(request, messages.ERROR, 'ไม่สามารถลบข้อมูลสินค้า')
+    return redirect('showCustomerList')
+
+def showGoodsList(request):
+    products = Goods.objects.all()
+    context = {'products': products}
+    return render(request, 'work/showGoodsList.html', context)
+
+
+def showGoodsOne(request, id):
+    product = Goods.objects.get(gid=id)  # เช็ค pk
+    context = {'product': product}
+    return render(request, 'work/showGoodsOne.html', context)
+
+
+def newGoods(request):
+    if request.method == 'POST':
+        form = showgoodsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request,messages.SUCCESS,'บันทึกสินค้าใหม่เรียบร้อย.........')
+            return redirect('showGoodsList')
+        else:
+            product = Goods.objects.get(gid=request.POST['gid'])
+            if product:
+                messages.add_message(request, messages.SUCCESS, 'รหัสสินค้าที่่กำหนดซ้ำกับที่มีอยู่')
+            messages.add_message(request, messages.SUCCESS, 'ไม่สามารถบันทึกข้อมูลสินค้าใหม่ได้.........')
+
+    else:
+        form = showgoodsForm()
+    context = {'form':form}
+    return render(request,'work/newGoods.html',context)
+
+def updateGoods(request, id):
+    product = get_object_or_404(Goods,gid=id)
+    form = showgoodsForm(data=request.POST or None, instance=product)
+    if request.method =='POST':
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, 'แก้ไขสินค้าใหม่เรียบร้อย.........')
+            return  redirect('showGoodsList')
+        else:
+            context = {'form': form}
+            messages.add_message(request, messages.SUCCESS, 'ข้อมูลไม่ถูกต้อง.........',context)
+    else:
+        form.updateGoods()
+        context = {'form': form}
+        return  render(request, 'work/updateGoods.html',context)
+
+def deleteGoods(request, id):
+    product = get_object_or_404(Goods,gid=id)
+    if product:
+        product.delete()
+        messages.add_message(request, messages.SUCCESS, 'ลบข้อมูลเรียบร้อย')
+        return redirect('showGoodsList')
+    else:
+        messages.add_message(request, messages.ERROR, 'ไม่สามารถลบข้อมูลสินค้า')
+    return redirect('showGoodsList')
+------------------------------------------
+form
+-------------------------------------
+class showgoodsForm(forms.ModelForm):
+    class Meta:
+        model = Goods
+        fields = ('gid', 'name', 'brand', 'mode', 'price', 'net', 'property', 'goodscategory')
+        widgets = {
+            'pid': forms.TextInput(attrs={'class': 'form-control'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'required': 'required', 'max_length': 35}),
+            'brand': forms.TextInput(attrs={'class': 'form-control'}),
+            'mode': forms.TextInput(attrs={'class': 'form-control'}),
+            'price': forms.NumberInput(attrs={'class': 'form-control'}),
+            'net': forms.NumberInput(attrs={'class': 'form-control'}),
+            'property': forms.TextInput(attrs={'class': 'form-control'}),
+            'goodscategory': forms.Select(attrs={'class': 'form-control'}),
+        }
+
+    labels = {
+        'pid': 'รหัสสินค้า',
+        'name': 'ชื่อสินค้า',
+        'brand': 'แบรนด์',
+        'mode': 'รุ่น',
+        'price': 'ราคา',
+        'net': 'คงเหลือ',
+        'property': 'คุณสมบัติ',
+        'goodscategory': 'ประเภท',
+    }
+
+    def updateGoods(self):
+        self.fields['gid'].widget.attrs['readonly'] = True
+        self.fields['gid'].label = 'รหัสสินค้า [ไม่อนุญาตให้แก้ไขได้]'
+
+---------------------------------------------
+models
+----------------------------------------
+class GoodsCategory(models.Model):
+    gc_name = models.CharField(max_length=50, default="")
+    desc = models.CharField(max_length=200,default="")
+    def __str__(self):
+        return str(self.id) + " : " +self.gc_name + " : " +self.desc
+
+class Goods(models.Model):
+    gid = models.CharField(max_length=13, primary_key=True, default="")
+    name = models.CharField(max_length=50,default="")
+    brand = models.CharField(max_length=30,default="")
+    mode = models.CharField(max_length=30,default="")
+    price = models.FloatField(default=0.00)
+    net = models.IntegerField(default=0)
+    property = models.CharField(max_length=30,default="")
+    goodscategory = models.ForeignKey(GoodsCategory, on_delete=models.CASCADE, default=None)
+    def __str__(self):
+        return self.gid + ":" + self.name + ":" + self.brand + " : " + self.mode + " : " + str(self.price) + " : " + str(self.net) + " : " + self.property + " : " + self.goodscategory.gc_name
+
+class Customer(models.Model):
+    cid = models.CharField(max_length=13, primary_key=True, default="")
+    name = models.CharField(max_length=50, default="")
+    surname = models.CharField(max_length=50, default="")
+    address = models.CharField(max_length=100, default="")
+    telephone = models.CharField(max_length=10, default="")
+    gender = models.CharField(max_length=10, default="")
+    carreer = models.CharField(max_length=20, default="")
+    password = models.CharField(max_length=20, default="")
+    def __str__(self):
+        return  self.cid + ":" + self.name + ":" + self.surname + ":" + self.address + ":" + self.telephone + ":" + self.gender + ":" + self.carreer + ":" + self.password
+
+class Order(models.Model):
+    oid = models.CharField(max_length=13, primary_key=True, default="")
+    date = models.CharField(max_length=20, default="")
+    status = models.CharField(max_length=50, default="")
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, default=None)
+    def __str__(self):
+        return self.oid + " : " + self.date + " : " + self.status + " : " + self.customer.name
+
+class OrderDetail(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, default=None)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, default=None)
+    price = models.FloatField(default=0.00)
+    quantity = models.IntegerField(default=0)
+    def __str__(self):
+        return str(self.id) + " : " + self.order.oid + " : " + self.customer.name + " : " + str(self.price) + " : " + str(self.quantity)
+
+-------------------------------------
+urls
+-----------------------------------
+path('showGoodsList',views.showGoodsList,name='showGoodsList'),
+    path('newGoods',views.newGoods,name='newGoods'),
+    path('<id>/showGoodsOne',views.showGoodsOne,name='showGoodsOne'),
+    path('updateGoods/<id>' ,views.updateGoods,name='updateGoods'),
+    path('deleteGoods/<id>' ,views.deleteGoods,name='deleteGoods'),
+
+    #ส่วนของ customer
+    path('showCustomerList',views.showCustomerList,name='showCustomerList'),
+    path('newCustomer',views.newCustomer,name='newCustomer'),
+    path('<id>/showCustomerOne',views.showCustomerOne,name='showCustomerOne'),
+    path('updateCustomer/<id>' ,views.updateCustomer,name='updateCustomer'),
+    path('deleteCustomer/<id>' ,views.deleteCustomer,name='deleteCustomer'),
+
+-------------------------------------
+

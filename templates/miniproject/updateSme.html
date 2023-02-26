@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fontawesome_5 %}
+{% block content %}
+    <style>
+    body {}
+    </style>
+    <h1 class="text-danger text-center bg-light">แก้ไขข้อมูล SME</h1>
+    <form method="post" class="form form-control">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <div class="text-center">
+        <br><button type="submit"  value="update now" class="btn btn-outline-warning"><i class="fa-solid fa-file-pen" style="font-size: 20px"></i>&nbsp;Update now</button>
+        <button type="reset" value="Reset" class="btn btn-outline-danger"><i class="fa-solid fa-repeat" style="font-size: 20px"></i>&nbsp;Reset</button>
+    </div>
+    </form><br><br>
+    <div class="text-center">
+    <a href="{% url 'home' %}" class="btn btn-primary">
+        <i class="fa-solid fa-arrow-left" style="font-size: 20px"></i>&nbsp;Back</a>
+    </a>
+    </div>
+{% endblock %}

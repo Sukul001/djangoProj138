@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fontawesome_5 %}
+{% fontawesome_5_static %}
+{% block content %}
+    <div class="col-lg-12">
+        <h1 class="text-center text-dark bg-white"> รายชื่อ SME </h1>
+    <h5 align="left"><a href={% url 'home' %}><i class="fa-solid fa-house" style="font-size: 23px;color: #51585e"></i>Home</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/ProfileApp/showBorrowing"><i class="fa-solid fa-hand-holding-dollar"></i>ทำเรื่องขอกู้</a></h5>
+        <table class="table  table-hover table-striped " style="background-color: aliceblue">
+        <thead>
+            <tr align="center">
+                <th> เลขที่ประจำตัวผู้เสียภาษีอากร</th>
+                <th> ชื่อกิจการรายย่อย</th>
+                <th> ที่อยู่</th>
+                <th> รหัสไปรษณีย์</th>
+                <th> วันที่จดทะเบียน</th>
+                <th> ประวัติการจดทะเบียน</th>
+                <th> เบอร์โทรศัพท์</th>
+                <th> ชื่อตัวแทน</th>
+                <th> วัตถุประสงค์การก่อตั้ง</th>
+                <th>
+                <a href="{% url 'addSme' %}">
+                            <i class="fa-solid fa-user-plus" style="font-size: 23px;color: #51585e"></i>
+                        </a></th>
+
+            </tr>
+            </thead>
+            {% for product in products %}
+                <tr align="center">
+                    <td>{{ product.sme_id }}</td>
+                    <td>{{ product.sme_name }}</td>
+                    <td>{{ product.sme_address }}</td>
+                    <td>{{ product.sme_zipcode }}</td>
+                    <td>{{ product.sme_regis }}</td>
+                    <td>{{ product.sme_history }}</td>
+                    <td>{{ product.sme_phone }}</td>
+                    <td>{{ product.sme_agent }}</td>
+                    <td>{{ product.sme_objective }}</td>
+{#                <td>{{ product.customer.cid }}</td>#}
+                    <td align="center">
+                        <br> <a href="{% url 'oneSme' product.sme_id %}">
+                        <i class="fa-solid fa-list" style="font-size: 23px;color: #51585e"></i>
+                    </a>
+                        <br> <a href="{% url 'updateSme' product.sme_id %}">
+                        <i class="fa fa-tools" style="font-size: 23px;color: #51585e"></i>
+                    </a>
+                        <br> <a href="{% url 'deleteSme' product.sme_id %}"
+                                onclick="return confirm('โปรดยืนยันการลบสินค้า {{ product.sme_id }}: {{ product.sme_name }}')">
+                        <i class="fa fa-trash" style="font-size: 23px;color: #51585e"></i>
+                    </a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

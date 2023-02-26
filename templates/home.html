@@ -1,17 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <center><h3><marquee>ยินดีต้อนรับสู้เว็บไซต์ Camera</marquee></h3></center>
-<style>
+    <center><h3><marquee>ยินดีต้อนรับสู้เว็บไซต์ ให้สินเชื่อสำหรับธุรกิจรายย่อย</marquee></h3></center>
+<style type="text/css">
 * {
   box-sizing: border-box;
 }
 
-body {
-  background-color: #f1f1f1;
-  padding: 0px;
-  font-family: Arial;
-}
+    body{
+        font-family: 'Prompt', sans-serif;
+    }
 
 .main {
   max-width: 1000px;
@@ -73,102 +71,92 @@ h1 {
 </style>
 <div class="main" >
 
-<h1>CAMERA.COM</h1>
+<h1>สินเชื่อสำหรับธุรกิจรายย่อย</h1>
 <hr>
 
-<h2>Product</h2>
+<h2>รายละเอียด</h2>
 
 <div id="myBtnContainer">
-  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-  <button class="btn" onclick="filterSelection('canon')"> Canon</button>
-  <button class="btn" onclick="filterSelection('sony')"> Sony</button>
-  <button class="btn" onclick="filterSelection('nikon')"> Nikon</button>
+  <button class="btn active" onclick="filterSelection('all')">แสดงทั้งหมด</button>
+  <button class="btn" onclick="filterSelection('canon')" >คำแนะนำ</button>
+  <button class="btn" onclick="filterSelection('sony')"> ประเภทธุรกิจ</button>
 </div>
 
 <div class="row">
-  <div class="column canon ">
-    <div class="content">
-        <a target="_blank" href="https://th.canon/th/consumer/eos-r5-body/product">
-      <img src="{% static 'images/canonr5.png' %}" alt="Mountains" style="width:100%">
+  <div class="column canon " >
+    <div class="content" style="height: 255px">
+        <a target="_blank" href="https://www.gsb.or.th/gsb_govs/smes_reatail/">
+      <img src="{% static 'images/Combo-Credit_SME_Drop-Leads-PC-New.jpg' %}" alt="Mountains" style="width:100%">
         </a>
-      <h4>Canon</h4>
-      <p>Canon EOS R5</p>
+      <h4>ธนาคารออมสิน</h4>
+      <p>เพื่อใช้ในการประกอบธุรกิจอุตสาหกรรม ธุรกิจพาณิชยกรรม ธุรกิจบริการ และเกษตรเพื่อการค้า</p>
+    </div>
+  </div>
+  <div class="column canon" >
+    <div class="content">
+        <a target="_blank" href="https://taokaemai.com/%E0%B9%80%E0%B8%9B%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%9A%E0%B9%80%E0%B8%97%E0%B8%B5%E0%B8%A2%E0%B8%9A%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%9E%E0%B8%B7/">
+    <img src="{% static 'images/SME-Loan.png' %}" alt="Lights" style="width:100%">
+        </a>
+      <h4>สินเชื่อเพื่อ SME</h4>
+      <p> ของธนาคารไหนดี ที่นี่มีแนะนำ</p>
     </div>
   </div>
   <div class="column canon">
     <div class="content">
-        <a target="_blank" href="https://th.canon/th/consumer/eos-r6-body/product">
-    <img src="{% static 'images/canonr6.png' %}" alt="Lights" style="width:100%">
-        </a>
-      <h4>Canon</h4>
-      <p>Canon EOS R6</p>
-    </div>
-  </div>
-  <div class="column canon">
-    <div class="content">
-         <a target="_blank" href="https://th.canon/th/consumer/eos-1d-x-mark-iii/product">
-    <img src="{% static 'images/idx3.png' %}" alt="Nature" style="width:100%">
+         <a target="_blank" href="https://www.tcg.or.th/article_inside.php?article_id=313">
+    <img src="{% static 'images/220908113837xsCs.jpg' %}" alt="Nature" style="width:100%">
          </a>
-      <h4>Canon</h4>
-      <p>Canon 1DX Mark III</p>
+      <h4>สิ่งที่ควรรู้เมื่อขอกู้เงิน</h4>
+      <p>เอกสารที่ใช้ในการขอสินเชื่อ</p>
     </div>
   </div>
 
   <div class="column sony">
     <div class="content">
-        <a target="_blank" href="https://www.sony.co.th/th/electronics/interchangeable-lens-cameras/ilce-7rm4">
-      <img src="{% static 'images/sonya7riv.jpg' %}" alt="Car" style="width:100%">
+        <a target="_blank" href="https://www.scb.co.th/th/sme-banking/business-loan/business-loan-products.html#categories=scb-sme:categories/secured-loan">
+      <img src="{% static 'images/ssme_green_financing_desktop.jpg' %}" alt="Car" style="width:100%">
         </a>
-      <h4>Sony</h4>
-      <p>Sony A7R Mark IV</p>
+      <h4>สินเชื่อธุรกิจ</h4>
+      <p>สินเชื่อธุรกิจแบบใช้หลักประกัน</p>
     </div>
   </div>
   <div class="column sony">
     <div class="content">
-        <a target="_blank" href="https://www.sony.co.th/th/electronics/interchangeable-lens-cameras/ilce-7m3-body-kit">
-    <img src="{% static 'images/a73.jpg' %}" alt="Car" style="width:100%">
+        <a target="_blank" href="https://www.scb.co.th/th/sme-banking/business-loan/unsecured-loan/unsecured-generic.html">
+    <img src="{% static 'images/ssme-unsecured-june2022-desktop.jpg' %}" alt="Car" style="width:100%">
         </a>
-      <h4>Sony</h4>
-      <p>Sony A7 Mark III</p>
+      <h4>สินเชื่อธุรกิจ</h4>
+      <p>สินเชื่อธุรกิจแบบไม่ใช้หลักประกัน</p>
     </div>
   </div>
   <div class="column sony">
     <div class="content">
-        <a target="_blank" href="https://www.sony.co.th/th/electronics/interchangeable-lens-cameras/ilce-7rm4">
-    <img src="{% static 'images/a7s.jpg' %}" alt="Car" style="width:100%">
+        <a target="_blank" href="https://www.scb.co.th/th/sme-banking/business-loan/working-capital/overdraft.html">
+    <img src="{% static 'images/overdraft-d.jpg' %}" alt="Car" style="width:100%">
         </a>
-      <h4>Sony</h4>
-      <p>Sony A7S Mark III</p>
+      <h4>สินเชื่อธุรกิจ</h4>
+      <p>เงินทุนหมุนเวียน</p>
+    </div>
+  </div>
+    <div class="column sony">
+    <div class="content">
+        <a target="_blank" href="https://www.scb.co.th/th/sme-banking/business-loan/letter-of-guarantee/letter-of-guarantee.html">
+    <img src="{% static 'images/letter-of-gurantee-d.jpg' %}" alt="Car" style="width:100%">
+        </a>
+      <h4>สินเชื่อธุรกิจ</h4>
+      <p>หนังสือค้ำประกัน</p>
+    </div>
+  </div>
+    <div class="column sony">
+    <div class="content">
+        <a target="_blank" href="https://www.scb.co.th/th/sme-banking/business-loan/long-term-loan/long-term-loan.html">
+    <img src="{% static 'images/long-term-loan-d.jpg' %}" alt="Car" style="width:100%">
+        </a>
+      <h4>สินเชื่อธุรกิจ</h4>
+      <p>สินเชื่อระยะยาว</p>
     </div>
   </div>
 
-  <div class="column nikon">
-    <div class="content">
-        <a target="_blank" href="https://www.digital2home.com/nikon-d750-bk-sg">
-      <img src="{% static 'images/d750.jpg' %}" alt="Car" style="width:100%">
-        </a>
-      <h4>Nikon</h4>
-      <p>Nikon D750</p>
-    </div>
-  </div>
-  <div class="column nikon">
-    <div class="content">
-        <a target="_blank" href="https://www.nikon.co.th/dslr-d-850">
-    <img src="{% static 'images/d850.jpg' %}" alt="Car" style="width:100%">
-        </a>
-      <h4>Nikon</h4>
-      <p>Nikon D850</p>
-    </div>
-  </div>
-  <div class="column nikon">
-    <div class="content">
-        <a target="_blank" href="https://www.nikon.co.th/dslr-d-6">
-    <img src="{% static 'images/d6.jpg' %}" alt="Car" style="width:100%">
-        </a>
-      <h4>Nikon</h4>
-      <p>Nikon D6</p>
-    </div>
-  </div>
 
 </div>
 

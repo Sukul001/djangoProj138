@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'exapp.apps.ExappConfig',
     'ProfileApp.apps.ProfileappConfig',
-    'fontawesome_5'
+    'fontawesome_5',
+
 ]
 
 MIDDLEWARE = [
@@ -87,8 +88,8 @@ WSGI_APPLICATION = 'djangoProj138.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django',
-        'USER': 'root',
+        'NAME': 'miniproject',
+        'USER': 'miniproject',
         'PASSWORD': '1234',
         'HOST': 'localhost',
         'POST': 3306,

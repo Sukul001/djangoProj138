@@ -56,18 +56,19 @@ li a:hover {
   background-color: inherit;
   font-family: inherit;
   margin: 0;
+
 }
 
 .navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: lightblue;
+  background-color: #91ccfc;
 }
 
 .subnav-content {
   display: none;
   position: absolute;
-  left: 0;
-  background-color: lightblue;
-  width: 100%;
+  left: 108px;
+  background-color: #91ccfc;
+  width: 86%;
   z-index: 1;
 }
 
@@ -80,6 +81,7 @@ li a:hover {
 .subnav-content a:hover {
   background-color: #eee;
   color: black;
+
 }
 
 .subnav:hover .subnav-content {
@@ -87,30 +89,81 @@ li a:hover {
 }
 </style>
  <ul type="square" >
-        <li><a href="/ProfileApp/home">หน้าหลัก</a></li>
-        <li><a href="/ProfileApp/story">ประวัติส่วนตัว</a></li>
-        <li><a href="/ProfileApp/storystudy">ประวัติการศึกษา</a></li>
-        <li><a href="/ProfileApp/camera">สิ่งที่สนใจ</a></li>
-        <div class="subnav">
+        {% if request.session.userId is None%}
+        <li><a href="/ProfileApp/home" > <i class="fa-solid fa-house"></i> หน้าหลัก</a></li>
+            <li><a href="/ProfileApp/userAuthen" class="text-lg-end text-primary text-decoration-none"><i class="fa-solid fa-right-to-bracket"></i> เข้าสู่ระบบ</a></li>
+     <li><a href="/admin" class="text-lg-end text-warning text-decoration-none"><i class="fa fa-toolbox" ></i> Admin.</a></li>
+      <!--  <li><a href="/ProfileApp/story">ประวัติส่วนตัว</a></li> -->
+       <!-- <li><a href="/ProfileApp/storystudy">ประวัติการศึกษา</a></li>
+        <li><a href="/ProfileApp/camera">สิ่งที่สนใจ</a></li> -->
+
+  <!--   <div class="subnav">
         <button class="subnavbtn">สินค้า <i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">
                 <li><a href="/ProfileApp/canon">Canon</a></li>
                 <li><a href="/ProfileApp/sony">Sony</a></li>
                 <li><a href="/ProfileApp/nikon">Nikon</a></li>
             </div>
+    </div> -->
+     {% else %}
+        {% if request.session.userStatus == 'customer' %}
+            <li><a href="/ProfileApp/home" ><i class="fa-solid fa-house"></i> หน้าหลัก</a></li>
+     <div class="subnav">
+        <button class="subnavbtn">Sme <i class="fa fa-caret-down"></i></button>
+            <div class="subnav-content">
+                <li><a href="/ProfileApp/showSme"><i class="fa-solid fa-user-tie"></i> ลงทะเบียน</a></li>
+                <li><a href="/ProfileApp/showPayment"><i class="fa-solid fa-file-signature"></i> การจ่ายจำระ</a></li>
+
+
+            </div>
     </div>
-        <li><a href="/ProfileApp/copyname">บุคคลต้นแบบ</a></li>
+            <li><a href="/ProfileApp/customerList"><i class="fa-solid fa-lightbulb"></i> เปลี่ยนข้อมูล</a></li>
+            <li><a href="{% url 'userLogout'%}" class="text-lg-end text-danger text-decoration-none" >
+                 ออกจากระบบ <i class="fa fa-sign-out-alt"></i></a></li>
+        {% else %}
+            <li><a href="/ProfileApp/home" >หน้าหลัก</a></li>
+     <div class="subnav">
+        <button class="subnavbtn">Bank <i class="fa fa-caret-down"></i></button>
+            <div class="subnav-content">
+                <li><a href="/ProfileApp/showConsideration"><i class="fa-solid fa-lightbulb"></i> ผลการพิจารณา</a></li>
+                <li><a href="/ProfileApp/showContract"><i class="fa-solid fa-file-signature"></i> การทำสัญญา</a></li>
+
+
+            </div>
+    </div>
+            <div class="subnav">
+        <button class="subnavbtn">แก้ไขข้อมูล SME <i class="fa fa-caret-down"></i></button>
+            <div class="subnav-content">
+                <li><a href="/ProfileApp/showcustomerList"><i class="fa-solid fa-lightbulb"></i> เปลี่ยนข้อมูล</a></li>
+            </div>
+    </div>
+            <div class="subnav">
+        <button class="subnavbtn">รายงานผล SME <i class="fa fa-caret-down"></i></button>
+            <div class="subnav-content">
+                <li><a href="{% url 'pdfProductReport'%}" >
+                รายงานSMEลงทะเบียน <i class="fa-solid fa-user-tie"></i></a></li>
+                <li><a href="{% url 'pdfBorrowing'%}" >
+                รายงานการขอกู้ <i class="fa-solid fa-user-tie"></i></a></li>
+                <li><a href="/ProfileApp/dashbordPie"><i class="fa-solid fa-file-signature"></i> แสดงผลการยืมเงิน</a></li>
+            </div>
+    </div>
+            <li><a href="{% url 'userLogout'%}" class="text-lg-end text-danger text-decoration-none">
+                ออกจากระบบ <i class="fa fa-sign-out-alt"></i></a></li>
+        {% endif %}
+    {% endif %}
+
+     <!--   <li><a href="/ProfileApp/copyname">บุคคลต้นแบบ</a></li>
         <li><a href="/ProfileApp/hpy">Happy new year</a></li>
         <li><a href="/ProfileApp/showMyData">showMyData</a></li>
         <li><a href="/ProfileApp/showMydatas">Infomation</a></li>
-        <li><a href="/ProfileApp/listProduct">MyProduct</a></li>
-        <div class="subnav">
+        <li><a href="/ProfileApp/listProduct">MyProduct</a></li> -->
+       <!-- <div class="subnav">
         <button class="subnavbtn">showGoodsList <i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">
                 <li><a href="/ProfileApp/showGoodsList">showGoodsList</a></li>
                 <li><a href="/ProfileApp/showCustomerList">showCustomerList</a></li>
             </div>
-        </div>
+        </div> -->
 
 
  </ul>

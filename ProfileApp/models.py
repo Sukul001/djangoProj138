@@ -1,6 +1,6 @@
 
 from django.db import models
-
+import datetime
 
 class Product:
     def __init__(self,id,name,type,color,brand,price):
@@ -106,3 +106,100 @@ class OrderDetail(models.Model):
     quantity = models.IntegerField(default=0)
     def __str__(self):
         return str(self.id) + " : " + self.order.oid + " : " + self.customer.name + " : " + str(self.price) + " : " + str(self.quantity)
+
+#-----------------ส่วนของminiproject
+
+class Customers(models.Model):
+    cid = models.CharField(max_length=13, primary_key=True, default="")
+    name = models.CharField(max_length=50, default="")
+    address = models.TextField(max_length=400, default="")
+    tel = models.CharField(max_length=20, default="")
+    password = models.CharField(max_length=255, default="12345678")
+    def __str__(self):
+        return self.cid + ":" + self.name + ", " + self.tel
+
+class Sme(models.Model):
+    sme_id = models.CharField(max_length=13, primary_key=True, default="")
+    sme_name = models.CharField(max_length=50, default="")
+    sme_address = models.CharField(max_length=100, default="")
+    sme_zipcode = models.CharField(max_length=5, default="")
+    sme_regis = models.DateField(default=None)
+    sme_history = models.CharField(max_length=1000, default="")
+    sme_phone = models.CharField(max_length=10, default="")
+    sme_agent = models.CharField(max_length=50, default="")
+    sme_objective = models.CharField(max_length=100, default="")
+    customer = models.ForeignKey(Customers, max_length=13, on_delete=models.CASCADE, default=None)
+    def __str__(self):
+        return self.sme_id + " : " + self.sme_name + " : " + self.sme_address + " : " + self.sme_zipcode + " : " + str(self.sme_regis) + " : " + self.sme_history + " : " + self.sme_phone + " : " + self.sme_agent + " : " + self.sme_objective + " : "
+
+class Borrowing(models.Model):
+    borrow_id = models.CharField(max_length=13, primary_key=True, default="")
+    borrow_date = models.DateField(default=None)
+    borrow_type = models.CharField(max_length=1000, default="")
+    borrow_objective = models.CharField(max_length=100, default="")
+    borrow_limitmoney = models.FloatField(default=0.00)
+    borrow_file = models.CharField(max_length=100, default="")
+    borrow_status = models.CharField(max_length=45, default="")
+    sme_id = models.ForeignKey(Sme, on_delete=models.CASCADE, default=None)
+    def __str__(self):
+        return self.borrow_id + " : "+str(self.borrow_file)+ ":" + self.borrow_type + " : " + self.borrow_objective + " : " + str(self.borrow_limitmoney) + " : " + self.borrow_file + " : " + self. borrow_status + " : " + self.sme_id.sme_id
+
+
+class Consideration(models.Model):
+    csd_id = models.CharField(max_length=13, primary_key=True, default="")
+    csd_date = models.DateField(default=None)
+    csd_status = models.CharField(max_length=45, default="")
+    br_id = models.ForeignKey(Borrowing, on_delete=models.CASCADE, default=None)
+
+    def __str__(self):
+        return self.csd_id + " : " + str(self.csd_date) + " : " + str(self.csd_status) + " : " + self.br_id.borrow_id
+
+class Contract(models.Model):
+    ct_id = models.CharField(max_length=10, primary_key=True, default="")
+    ct_datecontract = models.CharField(max_length=20, default="")
+    ct_fine = models.CharField(max_length=50, default="")
+    ct_status = models.CharField(max_length=20, default="")
+    ct_payment = models.FloatField(default=0.00)
+    ct_interest = models.FloatField(default=0.00)
+    ct_amount = models.IntegerField(default=0)
+    ct_datepayment = models.CharField(max_length=20, default="")
+    ct_dept = models.FloatField(default=0.00)
+    ct_limit = models.FloatField(default=0.00)
+    br_id = models.ForeignKey(Borrowing, on_delete=models.CASCADE, default=None)
+    def __str__(self):
+        return self.ct_id + " : " + " : " + self.ct_datecontract + " : " + self.ct_fine + " : " + self.ct_status + " : " + str(self.ct_payment) + " : " + str(self.ct_interest) + " : " + str(self.ct_amount) + " : " + self.ct_datepayment + " : " + str(self.ct_dept) + " : " + str(self.ct_limit) +" : "+ self.br_id.borrow_id
+
+class Payment(models.Model):
+    pm_id = models.CharField(max_length=10, primary_key=True, default="")
+    pm_fine = models.FloatField(default=0.00)
+    pm_status = models.CharField(max_length=20, default="")
+    pm_file = models.CharField(max_length=100, default="")
+    pm_bank = models.CharField(max_length=50, default="")
+    pm_tranfernumber = models.CharField(max_length=15, default="")
+    pm_payment = models.FloatField(default=0.00)
+    pm_installment = models.IntegerField(default=0)
+    pm_datepayment = models.CharField(max_length=50, default="")
+    ct_id = models.ForeignKey(Contract, on_delete=models.CASCADE, default=None)
+    def __str__(self):
+        return self.pm_id + " : " + str(self.pm_fine) + " : " + self.pm_status + " : " + self.pm_file + " : " + self.pm_bank + " : " + self.pm_tranfernumber + " : " + str(self.pm_payment) + " : " + str(self.pm_installment) + " : " + self.pm_datepayment + " : " + self.ct_id.ct_id
+
+#----------login---------------
+class Employees(models.Model):
+    eid = models.CharField(max_length=13, primary_key=True, default="")
+    name = models.CharField(max_length=50, default="")
+    birthdate = models.DateField(default=None)
+    position = models.CharField(max_length=50, default="")
+    password=models.CharField(max_length=255, default="12345678")
+    def __str__(self):
+        return self.eid + ":" + self.name + ", " + self.position
+    # def getCountConfirm(self):
+    #     count = Confirms.objects.filter(employee=self).aggregate(count=Count('id'))
+    #     return count['count']
+    # def getCountAccept(self):
+    #     count = Accepts.objects.filter(employee=self).aggregate(count=Count('id'))
+    #     return count['count']
+    # def getCountSend(self):
+    #     count = Send.objects.filter(employee=self).aggregate(count=Count('id'))
+    #     return count['count']
+
+

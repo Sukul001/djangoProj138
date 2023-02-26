@@ -1,0 +1,50 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="{% static 'stylesheets/bt502/css/bootstrap.css' %}">
+    <script src="{% static 'stylesheets/bt502/js/bootstrap.bundle.js'%}"></script>
+    <script type="text/javascript" src="{% static 'stylesheets/layout/scripts/jquery.min.js'%}"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <title>ตัวอย่างรายงานภาษาไทย</title>
+</head>
+<body>
+    <h1 align="center">
+        <b style="font-size:25px;font-weight: bold">
+            รายงานการขอกู้ยืม
+        </b>
+    </h1>
+    <h2 align="center">
+        บริษัท ให้สินเชื่อผู้ประกอบการรายย่อย <br>
+    </h2>
+    <hr align="center" width="300">
+        <table width="90%" border="1" align="center">
+            <tr style="font-size: 11px">
+                <th>รหัสการขอกู้</th><th>วันที่</th><th>ประเภทคำขอกู้</th><th>จุดประสงค์การกู้</th> <th>วงเงินขอกู้</th>
+                <th>ไฟล์โครงการ</th><th>สถานะคำขอกู้</th><th>เลขผู้เสียภาษีอากร</th>
+            </tr>
+            {% for product in products %}
+                <tr style="font-size: 9px">
+                    <td align="center">{{ product.borrow_id }}</td>
+                    <td>{{ product.borrow_date }}</td>
+                    <td align="right">{{ product.borrow_type}}</td>
+                    <td align="right">{{ product.borrow_objective }}</td>
+                    <td align="right">{{ product.borrow_limitmoney}} </td>
+                    <td align="right">{{ product.borrow_file }}</td>
+                    <td align="right">{{ product.borrow_status}} </td>
+                    <td align="right">{{ product.sme_id }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="9" align="center"><b>รวมจำนวน {{ products.count }} รายการ</b></td>
+            </tr>
+        </table>
+
+<br><br><br><br><br>
+
+        เจ้าหน้าที่การเงิน&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SME<br>
+(ลงชื่อ).................เจ้าหน้าที่การเงิน&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ลงชื่อ).................SME
+
+</body>
+</html>

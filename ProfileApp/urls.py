@@ -1,5 +1,7 @@
 from django.urls import path
 from ProfileApp import views
+from django.contrib import admin
+
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -33,10 +35,67 @@ urlpatterns = [
     path('showGoodsList',views.showGoodsList,name='showGoodsList'),
     path('newGoods',views.newGoods,name='newGoods'),
     path('<id>/showGoodsOne',views.showGoodsOne,name='showGoodsOne'),
+    path('updateGoods/<id>' ,views.updateGoods,name='updateGoods'),
+    path('deleteGoods/<id>' ,views.deleteGoods,name='deleteGoods'),
 
     #ส่วนของ customer
     path('showCustomerList',views.showCustomerList,name='showCustomerList'),
     path('newCustomer',views.newCustomer,name='newCustomer'),
     path('<id>/showCustomerOne',views.showCustomerOne,name='showCustomerOne'),
+    path('updateCustomer/<id>' ,views.updateCustomer,name='updateCustomer'),
+    path('deleteCustomer/<id>' ,views.deleteCustomer,name='deleteCustomer'),
+
+#-----------------ส่วนของminiproject
+    #ส่วนของฺsme
+    path('showSme',views.showSme,name='showSme'),
+    path('addSme',views.addSme,name='addSme'),
+    path('<id>/oneSme',views.oneSme,name='oneSme'),
+    path('updateSme/<id>' ,views.updateSme,name='updateSme'),
+    path('deleteSme/<id>' ,views.deleteSme,name='deleteSme'),
+    #ส่วนของฺBorrowing
+    path('showBorrowing',views.showBorrowing,name='showBorrowing'),
+    path('addBorrowing',views.addBorrowing,name='addBorrowing'),
+    path('<id>/oneBorrowing',views.oneBorrowing,name='oneBorrowing'),
+    path('updateBorrowing/<id>' ,views.updateBorrowing,name='updateBorrowing'),
+    path('deleteBorrowing/<id>' ,views.deleteBorrowing,name='deleteBorrowing'),
+    #ส่วนของฺConsideration
+    path('showConsideration',views.showConsideration,name='showConsideration'),
+    path('addConsideration',views.addConsideration,name='addConsideration'),
+    path('<id>/oneConsideration',views.oneConsideration,name='oneConsideration'),
+    path('updateConsideration/<id>' ,views.updateConsideration,name='updateConsideration'),
+    path('deleteConsideration/<id>' ,views.deleteConsideration,name='deleteConsideration'),
+    # ส่วนของฺContract
+    path('showContract', views.showContract, name='showContract'),
+    path('addContract', views.addContract, name='addContract'),
+    path('<id>/oneContract', views.oneContract, name='oneContract'),
+    path('updateContract/<id>', views.updateContract, name='updateContract'),
+    path('deleteContract/<id>', views.deleteContract, name='deleteContract'),
+    # ส่วนของฺPayment
+    path('showPayment', views.showPayment, name='showPayment'),
+    path('addPayment', views.addPayment, name='addPayment'),
+    path('<id>/onePayment', views.onePayment, name='onePayment'),
+    path('updatePayment/<id>', views.updatePayment, name='updatePayment'),
+    path('deletePayment/<id>', views.deletePayment, name='deletePayment'),
+    # ส่วนของฺlogin
+    path('userAuthen', views.userAuthen, name='userAuthen'),
+    path('userLogout', views.userLogout, name='userLogout'),
+    path('userChangePassword', views.userChangePassword, name='userChangePassword'),
+    path('<userId>/userResetPassword', views.userResetPassword, name='userResetPassword'),
+    path('customerRegister', views.customerRegistration, name='customerRegistration'),
+    path('userLogout', views.userLogout, name='userLogout'),
+    path('customerList', views.customerList, name='customerList'),
+    path('showcustomerList', views.showcustomerList, name='showcustomerList'),
+    path('customerRegister', views.customerRegistration, name='customerRegistration'),
+    path('<cid>/customerUpdate', views.customerUpdate, name='customerUpdate'),
+    #ส่วนของLine Notify
+
+    #ส่วนของPDF
+    path('pdfProductReport', views.pdfProductReport, name='pdfProductReport'),
+    path('pdfBorrowing', views.pdfBorrowing, name='pdfBorrowing'),
+
+    #ส่วนDashbord
+    path('dashbordPie', views.dashboardPieGraph, name='dashbordPie'),
+
 
 ]
+

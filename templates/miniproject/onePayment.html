@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fontawesome_5 %}
+{% fontawesome_5_static %}
+{% block content %}
+    <h1 class="text-center text-dark bg-white">ข้อมูลการชำระเงิน</h1>
+     <h2 class="text-center text-dark bg-white">{{ product.sme_id }}:{{ product.sme_name }}</h2>
+    <table class="table  table-hover table-striped " style="background-color: lavender">
+        <tr>
+            <td>รหัสการชำระ</td>
+            <td>{{ product.pm_id }}</td>
+        </tr><br>
+        <tr>
+            <td>ค่าปรับ</td>
+            <td>{{ product.pm_fine }}</td>
+        </tr>
+    <tr>
+            <td>สถานะการยืนยัน</td>
+            <td>{{ product.pm_status }}</td>
+        </tr>
+        <tr>
+            <td>ไฟล์สลิป</td>
+            <td>{{ product.pm_file }}</td>
+        </tr>
+    <tr>
+            <td>จากธนาคาร</td>
+            <td>{{ product.pm_bank }}</td>
+        </tr>
+    <tr>
+            <td>หมายเลขใบโอน</td>
+            <td>{{ product.pm_tranfernumber }}</td>
+        </tr>
+        <tr>
+            <td>ยอดชำระ</td>
+            <td>{{ product.pm_payment }}</td>
+        </tr>
+    <tr>
+            <td>งวดที่</td>
+            <td>{{ product.pm_installment }}</td>
+        </tr>
+    <tr>
+            <td>วันที่โอนเงิน</td>
+            <td>{{ product.pm_datepayment }}</td>
+        </tr>
+    <tr>
+            <td>รหัสการทำสัญญา</td>
+            <td>{{ product.ct_id }}</td>
+        </tr>
+    </table>
+    <a onclick="history.back();" class="btn btn-primary"><i class="fa-solid fa-arrow-left" style="font-size: 20px"></i>&nbsp;Back</a>
+{% endblock %}
